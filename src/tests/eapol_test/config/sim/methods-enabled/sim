@@ -2,5 +2,7 @@ type = sim
 default_eap_type = sim
 
 sim {
+	ssid="testing123"
 	virtual_server = "eap-sim"
+	allow_retry = yes
 }

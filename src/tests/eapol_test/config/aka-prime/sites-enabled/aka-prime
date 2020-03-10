@@ -20,9 +20,10 @@ server eap-aka-prime {
 
 	send Challenge-Request {
                 update control {
-                        &Sim-Ki  := 0x465b5ce8b199b49faa5f0a2ee238a6bc
-                        &Sim-Opc := 0xcd63cb71954a9f4e48a5994e37a02baf
-                        &Sim-SQN := 3
+                        &SIM-Ki  := 0x8baf473f2f8fd09487cccbd7097c6862
+                        &SIM-Opc := 0x8e27b6af0e692e750f32667a3b14605d
+                        &SIM-SQN := 0
+                        &SIM-Algo-Version := 5
                 }
 		update reply {
 			&Next-Reauth-Id := ""
