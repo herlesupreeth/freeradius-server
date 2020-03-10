@@ -79,7 +79,7 @@ static int vector_gsm_from_ki(REQUEST *request, VALUE_PAIR *vps, int idx, fr_aka
 {
 	VALUE_PAIR	*ki_vp, *version_vp;
 	uint8_t		opc_buff[MILENAGE_OPC_SIZE];
-	uint8_t	const	*opc_p;
+	uint8_t	const	*opc_p = NULL;
 	uint32_t	version;
 	int		i;
 
@@ -167,9 +167,10 @@ static int vector_gsm_from_ki(REQUEST *request, VALUE_PAIR *vps, int idx, fr_aka
 	 *	Store for completeness...
 	 */
 	memcpy(keys->auc.ki, ki_vp->vp_octets, sizeof(keys->auc.ki));
-	memcpy(keys->auc.opc, opc_p, sizeof(keys->auc.opc));
+	if (opc_p) {
+		memcpy(keys->auc.opc, opc_p, sizeof(keys->auc.opc));
+	}
 	keys->vector_src = AKA_SIM_VECTOR_SRC_KI;
-
 	return 0;
 }
 
